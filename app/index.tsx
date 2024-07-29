@@ -1,34 +1,55 @@
+// App.tsx
 import { View, Text, ImageBackground, SafeAreaView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { LinearGradient } from "expo-linear-gradient";
-
-import beachImage from "@/assets/meditation-images/beach.webp";
-import CustomButton from "@/components/CustomButton";
 import { useRouter } from "expo-router";
 import AppGradient from "@/components/AppGradient";
+import beachImage from "@/assets/meditation-images/beach.webp";
+import CustomButton from "@/components/CustomButton";
+
 const App = () => {
-  const rounter = useRouter();
+  const router = useRouter();
+
   return (
-    <View className="flex-1">
+    <View style={{ flex: 1 }}>
       <ImageBackground
         source={beachImage}
         resizeMode="cover"
-        className="flex-1"
+        style={{ flex: 1 }}
       >
         <AppGradient colors={["rgba(0, 0, 0 ,0.4)", "rgba(0, 0, 0, 0.8)"]}>
-          <SafeAreaView className="flex-1 px-1 justify-between">
+          <SafeAreaView
+            style={{
+              flex: 1,
+              paddingHorizontal: 16,
+              justifyContent: "space-between",
+            }}
+          >
             <View>
-              <Text className="text-center text-white font-bold text-4xl">
+              <Text
+                style={{
+                  textAlign: "center",
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: 32,
+                }}
+              >
                 Simple Meditation
               </Text>
-              <Text className="text-center text-white text-2xl mt-3">
-                Simplifing Meditaion for Everyone
+              <Text
+                style={{
+                  textAlign: "center",
+                  color: "white",
+                  fontSize: 24,
+                  marginTop: 12,
+                }}
+              >
+                Simplifying Meditation for Everyone
               </Text>
             </View>
             <View>
               <CustomButton
-                onPress={() => rounter.push("/nature-meditate")}
+                onPress={() => router.push("/nature-meditate")}
                 title="Get started"
               />
             </View>

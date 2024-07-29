@@ -1,38 +1,74 @@
-import { View, Text, FlatList, Pressable, ImageBackground } from "react-native";
+// screens/nature-meditate.tsx
 import React from "react";
-import AppGradient from "@/components/AppGradient";
+import { View, Text, FlatList, Pressable, ImageBackground } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import AppGradient from "@/components/AppGradient";
 import { MEDITATION_DATA } from "@/constants/meditaionData";
 import MEDITATION_IMAGES from "@/constants/meditaion-images";
-const nature = () => {
+import { LinearGradient } from "expo-linear-gradient";
+
+const NatureMeditateScreen = () => {
   return (
-    <View className="flex-1 ">
+    <View style={{ flex: 1 }}>
       <AppGradient colors={["#161b2e", "#0a4d4a", "#766e67"]}>
-        <View className="mb-6 mx-3">
-          <Text className="text-gray-200 mb-3 font-bold text-4xl text-left">
+        <View style={{ marginBottom: 24, marginHorizontal: 12 }}>
+          <Text
+            style={{
+              color: "#c2c7db",
+              marginBottom: 12,
+              fontWeight: "bold",
+              fontSize: 32,
+            }}
+          >
             Welcome Aman
           </Text>
-          <Text className="text-indigo-100 text-xl font-medium ">
-            Start your meditaion today
+          <Text
+            style={{ color: "#a5b1e6", fontSize: 20, fontWeight: "medium" }}
+          >
+            Start your meditation today
           </Text>
         </View>
         <View>
           <FlatList
             data={MEDITATION_DATA}
             keyExtractor={(item) => item.id.toString()}
-            className="mb-20"
+            style={{ marginBottom: 80 }}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
               <Pressable
                 onPress={() => console.log("press")}
-                className="h-48 my-3 mx-3 rounded-md overflow-hidden"
+                style={{
+                  height: 192,
+                  marginVertical: 12,
+                  marginHorizontal: 12,
+                  borderRadius: 8,
+                  overflow: "hidden",
+                }}
               >
                 <ImageBackground
                   resizeMode="cover"
                   source={MEDITATION_IMAGES[item.id - 1]}
-                  className="flex-1 rounded-lg justify-center"
+                  style={{ flex: 1, borderRadius: 8, justifyContent: "center" }}
                 >
-                  <Text>{item.title}</Text>
+                  <LinearGradient
+                    style={{
+                      flex: 1,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                    colors={["transparent", "rgba(0,0,0,0.8)"]}
+                  >
+                    <Text
+                      style={{
+                        color: "#e5e7eb",
+                        fontSize: 24,
+                        fontWeight: "bold",
+                        textAlign: "center",
+                      }}
+                    >
+                      {item.title}
+                    </Text>
+                  </LinearGradient>
                 </ImageBackground>
               </Pressable>
             )}
@@ -44,4 +80,4 @@ const nature = () => {
   );
 };
 
-export default nature;
+export default NatureMeditateScreen;
