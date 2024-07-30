@@ -6,6 +6,7 @@ import AppGradient from "@/components/AppGradient";
 import { MEDITATION_DATA } from "@/constants/meditaionData";
 import MEDITATION_IMAGES from "@/constants/meditaion-images";
 import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 
 const NatureMeditateScreen = () => {
   return (
@@ -36,7 +37,7 @@ const NatureMeditateScreen = () => {
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
               <Pressable
-                onPress={() => console.log("press")}
+                onPress={() => router.push(`/meditate/${item.id}`)}
                 style={{
                   height: 192,
                   marginVertical: 12,
